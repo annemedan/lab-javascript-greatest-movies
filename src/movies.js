@@ -1,19 +1,65 @@
 // Iteration 1: All directors? - Get the array of all directors.
 // _Bonus_: It seems some of the directors had directed multiple movies so they will pop up multiple times in the array of directors.
 // How could you "clean" a bit this array and make it unified (without duplicates)?
-function getAllDirectors() {}
+function getAllDirectors(Arr) {
+  const directors = Arr.map(person => person.director)
+  return directors
+}
 
 // Iteration 2: Steven Spielberg. The best? - How many drama movies did STEVEN SPIELBERG direct?
-function howManyMovies() {}
+function howManyMovies(count) {
+  const stevenMovies = count.filter(movie => movie.director === "Steven Spielberg" && movie.genre.includes('Drama'));
+  return stevenMovies.length;
+}
+
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
-function scoresAverage() {}
+function scoresAverage(Arr) {
+  if (!Arr.length){
+    return 0
+  }
+
+  let scores = Arr.map(grades => grades.score)
+  
+  let totalScore = scores.reduce(function(previousValue, currentValue) {
+      if (typeof currentValue !== "number"){
+      currentValue = 0; 
+      }
+      return previousValue + currentValue;
+  });
+
+  return Number((totalScore / scores.length).toFixed(2))
+}
+
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
-function dramaMoviesScore() {}
+function dramaMoviesScore(Arr) {
+  if (!Arr.length){
+    return 0
+  }  
+
+  let dramaMovies = Arr.filter(movie => movie.genre.includes("Drama"));
+
+  let scores = dramaMovies.map(movie => movie.score)
+ 
+  let totalScore = scores.reduce(function(previousValue, currentValue) {
+      if (typeof currentValue !== "number"){
+      currentValue = 0; 
+      }
+      return previousValue + currentValue;
+  });
+
+  return Number((totalScore / dramaMovies.length).toFixed(2))
+}
+
+
+//This one has an error = should return 0 if there is no Drama movie
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
-function orderByYear() {}
+function orderByYear(Arr) {
+  let yearOrder = Arr[year].sort((a, b) => b - a)
+  return yearOrder
+}
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
 function orderAlphabetically() {}
