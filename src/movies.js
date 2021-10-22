@@ -80,16 +80,24 @@ return yearOrder
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
 function orderAlphabetically(Arr) {
 
-  let titleOrder = Arr.map(name => name.title)
-  
-  let titleAsc = titleOrder.sort((a, b) => a + b)
-
-  if (titleAsc.length > 20){
-    titleAsc.splice( 0, titleAsc.length - 20);
+  let titlesList = Arr.map(grades => grades.title)
+  let titleOrder = [];
+  titleOrder = titlesList.slice().sort((movie1, movie2) => {
+    if (movie1.title > movie2.title) {
+      return 1
+    } else {
+      return -1
+    }
+    
+  })
+  if (titleOrder.length > 20){
+    titleOrder.splice(titleOrder.length - 20);
   }
   
-  return titleAsc
+  return titleOrder
 }
+
+
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 function turnHoursToMinutes() {}
